@@ -19,7 +19,7 @@ const App = ()=> {
     objectID: 1,
   },
 ];
-  const [searchTerm,setSearchTerm] = React.useState("")
+  const [searchTerm,setSearchTerm] = React.useState("t")
   const handleSearch = (event)=>{
     setSearchTerm(event.target.value) ;
   };
