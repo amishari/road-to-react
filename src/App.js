@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-const list = [
+const App = ()=> {
+  const stories = [
   {
     title: 'React',
     url: 'https://reactjs.org/',
@@ -18,33 +19,58 @@ const list = [
     objectID: 1,
   },
 ];
-
-function App() {
   return (
     <div>
       <h1>My Hacker Stories</h1>
-
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
-
+      <Search  />
       <hr />
+      <List list={stories} />
 
+    </div>
+  );
+}
+
+const Search = ()=>{
+  const [searchTerm,setSearchTerm] = React.useState("")
+  const handleChange = (event)=>{
+    setSearchTerm(event.target.value) ;
+  };
+  return(
+  
+  <>
+    <label htmlFor="search">Search: </label>
+    
+    <input 
+    id="search"
+    type="text"
+    onChange={handleChange} 
+    />
+    <p>
+      Searching for <strong>{searchTerm}</strong> 
+    </p>  
+  </>
+ );
+};
+const List = ({list})=>(
       <ul>
-        {list.map(function (item) {
-          return (
-            <li key={item.objectID}>
+          {list.map((item)=>(
+            <Item key= {item.objectID} item={item} />
+          ))}
+          
+      </ul>
+);
+
+const Item = ({item})=>(
+            <li>
               <span>
                 <a href={item.url}>{item.title}</a>
               </span>
               <span>{item.author}</span>
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+          </li>
+                
+);
+
 
 export default App;
