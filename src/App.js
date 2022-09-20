@@ -114,12 +114,8 @@ const List = ({list, onRemoveItem})=>(
       </ul>
 );
 
-const Item = ({item, onRemoveItem})=>{
+const Item = ({item, onRemoveItem})=>(
 
-  const handleRemoveItem = ()=>{
-    onRemoveItem(item);
-  };
-  return(
             <li>
               <span>
                 <a href={item.url}>{item.title}</a>
@@ -135,6 +131,5 @@ const Item = ({item, onRemoveItem})=>{
           </li>
                 
 );
-};
 
 export default App;
